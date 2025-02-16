@@ -1,0 +1,9 @@
+# Netlify configuration file
+[build]
+  publish = "."
+  command = ""
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin/"
+  status = 200
