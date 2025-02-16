@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exclusive Executive</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="sticky-nav">
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#order">Place Order</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Exclusive Executive</h1>
+      <p>High-volume hat orders for high-impact branding</p>
+      <div class="hero-buttons">
+        <button onclick="openOrderForm()">Place My Order</button>
+        <a href="#contact" class="btn-contact">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us -->
+  <section id="about" class="about">
+    <div class="section-title">
+      <h2>About Us</h2>
+    </div>
+    <div class="about-text" id="aboutContent">
+      <!-- This text can be edited via Netlify CMS if desired -->
+      <p>
+        Our mission is simple: empower marketing teams with high-volume, 
+        budget-friendly branded hats. We know budgets are tight, yet brand impressions 
+        are essential. By partnering with a Thailand-based manufacturer, we ensure 
+        top-notch quality at drastically lower prices than typical suppliers.
+      </p>
+    </div>
+  </section>
+
+  <!-- Place Order (Hat Carousel) -->
+  <section id="order" class="order-section">
+    <div class="section-title">
+      <h2>Place Your Order</h2>
+    </div>
+    <div class="carousel">
+      <!-- Minimal example - you can expand to real images. -->
+      <div class="carousel-item">
+        <img src="https://via.placeholder.com/400x300?text=Hat+Type+1" alt="Hat Type 1" />
+        <p>Classic Cap</p>
+      </div>
+      <div class="carousel-item">
+        <img src="https://via.placeholder.com/400x300?text=Hat+Type+2" alt="Hat Type 2" />
+        <p>Snapback Hat</p>
+      </div>
+      <div class="carousel-item">
+        <img src="https://via.placeholder.com/400x300?text=Hat+Type+3" alt="Hat Type 3" />
+        <p>Trucker Hat</p>
+      </div>
+      <!-- Add more items as needed -->
+    </div>
+    <div class="text-center">
+      <button onclick="openOrderForm()">Get My Quote</button>
+    </div>
+  </section>
+
+  <!-- Contact Us -->
+  <section id="contact" class="contact-section">
+    <div class="section-title">
+      <h2>Contact Us</h2>
+    </div>
+    <p class="contact-description">
+      We understand that marketers have unique needs, and we’re here to help. 
+      Use the form below to let us know how we can assist!
+    </p>
+    <form action="https://formspree.io/f/yourFormID" method="POST" class="contact-form">
+      <label for="fname">First Name</label>
+      <input type="text" name="fname" required>
+
+      <label for="lname">Last Name</label>
+      <input type="text" name="lname" required>
+
+      <label for="phone">Phone</label>
+      <input type="tel" name="phone">
+
+      <label for="email">Email</label>
+      <input type="email" name="email" required>
+
+      <label for="companyName">Company Name</label>
+      <input type="text" name="companyName" required>
+
+      <label for="message">Message / Additional Details</label>
+      <textarea name="message"></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <!-- Overlay Form (Order) -->
+  <div id="orderOverlay" class="overlay">
+    <div class="overlay-content">
+      <span class="close" onclick="closeOrderForm()">&times;</span>
+      <form action="https://formspree.io/f/yourFormID" method="POST" class="multi-step-form" enctype="multipart/form-data">
+        <!-- Step 1: Choose Hat Type -->
+        <div class="form-step active">
+          <h3>Choose Your Hat Type</h3>
+          <div class="tiles">
+            <label>
+              <input type="radio" name="hatType" value="Classic Cap" required> Classic Cap
+            </label>
+            <label>
+              <input type="radio" name="hatType" value="Snapback Hat" required> Snapback Hat
+            </label>
+            <label>
+              <input type="radio" name="hatType" value="Trucker Hat" required> Trucker Hat
+            </label>
+            <label>
+              <input type="radio" name="hatType" value="Dad Hat" required> Dad Hat
+            </label>
+            <label>
+              <input type="radio" name="hatType" value="5-Panel Hat" required> 5-Panel Hat
+            </label>
+            <label>
+              <input type="radio" name="hatType" value="Beanie" required> Beanie
+            </label>
+          </div>
+          <button type="button" class="next-btn">Next</button>
+        </div>
+
+        <!-- Step 2: Order Quantity -->
+        <div class="form-step">
+          <h3>Order Quantity</h3>
+          <label><input type="radio" name="quantityRange" value="144-2448" required>144 - 2448</label>
+          <label><input type="radio" name="quantityRange" value="2448-4896" required>2448 - 4896</label>
+          <label><input type="radio" name="quantityRange" value="4896+" required>4896+</label>
+          <button type="button" class="prev-btn">Back</button>
+          <button type="button" class="next-btn">Next</button>
+        </div>
+
+        <!-- Step 3: Design Options -->
+        <div class="form-step">
+          <h3>Design Options</h3>
+          <label>Embroidery on the peak? 
+            <input type="checkbox" name="peakEmbroidery" value="Yes">
+          </label>
+          <label>Front Design 
+            <select name="frontDesign">
+              <option value="embroidery">Embroidery</option>
+              <option value="patch">Patch</option>
+            </select>
+          </label>
+          <label>Front Position
+            <select name="frontPosition">
+              <option value="center">Center</option>
+              <option value="left">Left</option>
+              <option value="right">Right</option>
+            </select>
+          </label>
+          <label>Sides?
+            <input type="checkbox" name="sideDesign" value="Yes">
+          </label>
+          <label>Back?
+            <input type="checkbox" name="backDesign" value="Yes">
+          </label>
+          <button type="button" class="prev-btn">Back</button>
+          <button type="button" class="next-btn">Next</button>
+        </div>
+
+        <!-- Step 4: Description & File Uploads -->
+        <div class="form-step">
+          <h3>Design Description</h3>
+          <label for="designDesc">Tell us about your desired design:</label>
+          <textarea name="designDesc" rows="3"></textarea>
+
+          <label>Upload Your Logo:
+            <input type="file" name="logoFile" accept=".png,.jpg,.jpeg,.svg" />
+          </label>
+          <label>Upload Inspiration (optional):
+            <input type="file" name="inspirationFile" accept=".png,.jpg,.jpeg,.svg" />
+          </label>
+          <button type="button" class="prev-btn">Back</button>
+          <button type="button" class="next-btn">Next</button>
+        </div>
+
+        <!-- Step 5: Contact Info & Delivery -->
+        <div class="form-step">
+          <h3>Contact Info</h3>
+          <label>First Name: <input type="text" name="firstName" required></label>
+          <label>Last Name: <input type="text" name="lastName" required></label>
+          <label>Phone: <input type="tel" name="phone"></label>
+          <label>Email: <input type="email" name="email" required></label>
+          <label>Company Name: <input type="text" name="companyName" required></label>
+          <label>Company Website: <input type="url" name="companyWebsite"></label>
+          <label>Position: <input type="text" name="position"></label>
+          <label>Delivery Address: <input type="text" name="deliveryAddress"></label>
+          <label>Date Needed By: <input type="date" name="dateNeeded"></label>
+          <button type="button" class="prev-btn">Back</button>
+          <button type="button" class="next-btn">Next</button>
+        </div>
+
+        <!-- Step 6: Thank You -->
+        <div class="form-step">
+          <h3>Thank You!</h3>
+          <p>We have received your specifications. Our team will be in touch soon with a custom quote.</p>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
